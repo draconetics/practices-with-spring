@@ -11,7 +11,7 @@ import com.demo.hospital.repository.DoctorRepository;
 
 
 @Service
-public class DoctorService {
+public class DoctorCreateService {
 	
 	private DoctorCommand doctorCommand;
 	private Doctor doctor;

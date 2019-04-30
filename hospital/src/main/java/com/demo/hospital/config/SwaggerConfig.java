@@ -32,9 +32,9 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
 
         return new ApiInfoBuilder()
-                .title("Users Service API")
-                .description("Users management")
-                .contact(new Contact("santiago", "", "sm.zeballos.umss@gmail.com"))
+                .title("Doctors Service API")
+                .description("Doctors management")
+                .contact(new Contact("mario", "", "marioflorescondori@gmail.com"))
                 .version("0.0.1")
                 .license("Apache 1.0")
                 .licenseUrl("https://docs.spring.io/spring-data/jpa/docs/current/reference/html/")

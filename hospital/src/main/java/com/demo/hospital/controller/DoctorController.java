@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +23,8 @@ import org.springframework.web.context.annotation.RequestScope;
 import com.demo.hospital.dao.DoctorCommand;
 import com.demo.hospital.model.Doctor;
 import com.demo.hospital.repository.DoctorRepository;
-import com.demo.hospital.service.DoctorService;
+import com.demo.hospital.service.DoctorCreateService;
+import com.demo.hospital.service.DoctorUpdateService;
 
 @RequestMapping(value = "/doctors")
 @RestController
@@ -30,7 +32,14 @@ import com.demo.hospital.service.DoctorService;
 public class DoctorController {
 
     @Autowired
-    private DoctorService doctorService;
+    private DoctorCreateService doctorCreateService;
+    
+    @Autowired
+    private DoctorUpdateService doctorUpdateService;
+    
+	@Autowired
+	private DoctorRepository doctorRepository;
+    
     
 	 @RequestMapping(
 			 	value = "/hello",
@@ -42,16 +51,16 @@ public class DoctorController {
 	 
 	 @RequestMapping(method = RequestMethod.POST)
     public Doctor createDoctor(@RequestBody DoctorCommand doctorCommand) {
-        doctorService.setInput(doctorCommand);
-        doctorService.execute();
+        doctorCreateService.setInput(doctorCommand);
+        doctorCreateService.execute();
 
-        return doctorService.getDoctor();
+        return doctorCreateService.getDoctor();
     }
 	 
     @RequestMapping(method = RequestMethod.GET)
     public List<DoctorCommand> getDoctors() {
     	List<DoctorCommand> doctorList = new ArrayList<DoctorCommand>();
-        doctorService.getDoctorRepository().findAll().forEach(doctor -> {
+        doctorCreateService.getDoctorRepository().findAll().forEach(doctor -> {
             doctorList.add(new DoctorCommand(doctor));
         });
         
@@ -59,7 +68,31 @@ public class DoctorController {
     }
 	    
 
-	 
+    @RequestMapping(
+            value = "/{doctorId}",
+            method = RequestMethod.PUT)
+    public Doctor updateDoctor(@PathVariable("doctorId") Long doctorId,
+        @RequestBody DoctorCommand doctorCommand) {
+		doctorUpdateService.setDoctorId(doctorId);
+		doctorUpdateService.setDoctorCommand(doctorCommand);
+		doctorUpdateService.execute();
+		
+		return doctorUpdateService.getDoctor();
+	}
+    
+    @RequestMapping(
+            value = "/{doctorId}",
+            method = RequestMethod.DELETE)
+    public String deleteDoctor(@PathVariable(value = "doctorId") Long doctorId) {
+
+        try {
+        	doctorRepository.deleteById(doctorId);
+        	return "Deleted Doctor " + doctorId;
+        }catch(Exception e) {
+        	System.out.println(e);
+        	return "Error deleting Doctor";
+        }
+    }
 	
 
 	/*

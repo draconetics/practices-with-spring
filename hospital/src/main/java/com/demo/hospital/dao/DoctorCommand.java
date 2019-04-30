@@ -15,7 +15,6 @@ public class DoctorCommand extends ModelBase{
     
     public DoctorCommand (Doctor newDoctor) {
     	
- 
         setId(newDoctor.getId());
         setVersion(newDoctor.getVersion());
         setCreatedOn(newDoctor.getCreatedOn());
