@@ -20,10 +20,10 @@ public class SwaggerConfig {
     @Bean
     public Docket publicApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("users-api")
+                .groupName("doctors-api")
                 .select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("com.livecron.users.service.controller"))
+                        .basePackage("com.demo.hospital.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());

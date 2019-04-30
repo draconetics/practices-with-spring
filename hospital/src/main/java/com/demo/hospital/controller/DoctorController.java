@@ -2,29 +2,63 @@
  * @author: Edson A. Terceros T.
  */
 
-package com.demo.hospital.controllers;
+package com.demo.hospital.controller;
 
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.RequestScope;
 
+import com.demo.hospital.dao.DoctorCommand;
+import com.demo.hospital.model.Doctor;
+import com.demo.hospital.repository.DoctorRepository;
+import com.demo.hospital.service.DoctorService;
 
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/doctors")
 @RestController
-public class EmployeeController {
+@RequestScope
+public class DoctorController {
 
-	
+    @Autowired
+    private DoctorService doctorService;
+    
 	 @RequestMapping(
-	            value = "/",
+			 	value = "/hello",
 	            method = RequestMethod.GET
     )
-	public String findAsus() {
+	public String responseHello() {
 		 return "hello world";
 	}
+	 
+	 @RequestMapping(method = RequestMethod.POST)
+    public Doctor createDoctor(@RequestBody DoctorCommand doctorCommand) {
+        doctorService.setInput(doctorCommand);
+        doctorService.execute();
+
+        return doctorService.getDoctor();
+    }
+	 
+    @RequestMapping(method = RequestMethod.GET)
+    public List<DoctorCommand> getDoctors() {
+    	List<DoctorCommand> doctorList = new ArrayList<DoctorCommand>();
+        doctorService.getDoctorRepository().findAll().forEach(doctor -> {
+            doctorList.add(new DoctorCommand(doctor));
+        });
+        
+        return doctorList;
+    }
+	    
+
 	 
 	
 
