@@ -1,0 +1,17 @@
+
+/.metadata
+/.recommenders
+/demo/.classpath
+/demo/.project
+/demo/.settings/
+/demo/.gitignore
+/demo/mvnw
+/demo/mvnw.cmd
+/demo/.mvn
+/hospital/.classpath
+/hospital/.gitignore
+/hospital/.project
+/hospital/.settings/
+
+
+
