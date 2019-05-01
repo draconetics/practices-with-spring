@@ -11,6 +11,8 @@ import java.util.List;
 @Entity
 public class Doctor extends ModelBase {
 
+	
+	
     private String firstName;
     private String lastName;
     
