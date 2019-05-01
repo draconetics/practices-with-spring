@@ -17,6 +17,7 @@ import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.Date;
 
+
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class ModelBase implements Serializable{

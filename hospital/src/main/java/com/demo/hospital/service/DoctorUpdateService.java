@@ -1,5 +1,6 @@
 package com.demo.hospital.service;
 
+
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class DoctorUpdateService {
     public Doctor getDoctor() {
         return this.doctor;
     }
-
+}
 
 /*
 
@@ -95,4 +96,4 @@ public class DoctorUpdateService {
 	
 	*/
 	
-}
+

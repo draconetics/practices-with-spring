@@ -94,7 +94,7 @@ public class DoctorController {
         }
     }
 	
-
+}
 	/*
     public EmployeeController(EmployeeService service) {
         this.service = service;
@@ -154,8 +154,8 @@ public class DoctorController {
         service.saveImage(Long.valueOf(id), file);
         return Response.ok("Data uploaded successfully !!").build();
     }
-
+}
+*/
     /*
     https://www.getpostman.com/collections/cb9764af6c5d5bcaa0c9
     */
-}

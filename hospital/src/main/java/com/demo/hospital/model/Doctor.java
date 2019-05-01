@@ -44,6 +44,8 @@ public class Doctor extends ModelBase {
     public void setImage(Byte[] image) {
         this.image = image;
     }
+}
+
 /*
     public List<C> getContracts() {
         return contracts;
@@ -52,4 +54,3 @@ public class Doctor extends ModelBase {
     public void setContracts(List<Contract> contracts) {
         this.contracts = contracts;
     }*/
-}
