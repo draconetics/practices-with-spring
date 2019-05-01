@@ -12,6 +12,8 @@
 /hospital/.gitignore
 /hospital/.project
 /hospital/.settings/
-
+/sample/.classpath
+/sample/.project
+/sample/bin/.gitignore
 
 
