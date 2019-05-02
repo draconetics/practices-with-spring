@@ -12,8 +12,9 @@
 /hospital/.gitignore
 /hospital/.project
 /hospital/.settings/
+/hospital/target/*
 /sample/.classpath
 /sample/.project
 /sample/bin/.gitignore
-
+tmp/one/*
 
