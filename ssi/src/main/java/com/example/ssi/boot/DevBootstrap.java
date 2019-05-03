@@ -127,10 +127,23 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
  	   Teacher teacher2 = new Teacher(0, "Krishna","Adv Java",classSet2);
  	   Teacher teacher3 = new Teacher(0, "Masthanvali","DB2",classSet3);
 
+
+
+ 	   
  	   //Store
  	   teacherRepository.save(teacher1);
  	   teacherRepository.save(teacher2);
  	   teacherRepository.save(teacher3);
+ 	   
+ 	   
+ 	   //adding teacher set to a class
+ 	   Set<Teacher> teacherSet = new HashSet();
+ 	   teacherSet.add(teacher1);
+ 	   teacherSet.add(teacher2);
+ 	   teacherSet.add(teacher3);
+ 	   
+ 	   clas1.setTeacherSet(teacherSet);
+ 	   clasRepository.save(clas1);
     }
     
     
