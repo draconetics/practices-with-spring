@@ -18,8 +18,7 @@ public class Doctor extends ModelBase {
     
     @Lob
     private Byte[] image;
-  //  @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-  //  private List<Object> contracts = new ArrayList<>();
+
 
     public String getFirstName() {
         return firstName;
@@ -46,11 +45,4 @@ public class Doctor extends ModelBase {
     }
 }
 
-/*
-    public List<C> getContracts() {
-        return contracts;
-    }
 
-    public void setContracts(List<Contract> contracts) {
-        this.contracts = contracts;
-    }*/
