@@ -22,8 +22,8 @@ public class BookCommand extends ModelBase{
         description = book.getDescription();
         year = book.getYear();
         
-        descriptionState = book.getDetail().getDescription();
-        conditionCode = book.getDetail().getCondition();
+        //descriptionState = book.getDetail().getDescription();
+        //conditionCode = book.getDetail().getCondition();
 	}
 	
 	public String getTitle() {

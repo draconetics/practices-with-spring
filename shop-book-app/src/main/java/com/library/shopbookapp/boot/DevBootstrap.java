@@ -6,15 +6,18 @@ package com.library.shopbookapp.boot;
 
 
 
+import org.junit.experimental.categories.Categories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import com.library.shopbookapp.model.Area;
 import com.library.shopbookapp.model.Book;
-import com.library.shopbookapp.model.Detail;
+import com.library.shopbookapp.model.Category;
+import com.library.shopbookapp.repository.AreaRepository;
 import com.library.shopbookapp.repository.BookRepository;
-import com.library.shopbookapp.repository.DetailRepository;
+import com.library.shopbookapp.repository.CategoryRepository;
 
 import java.util.Date;
 
@@ -25,7 +28,11 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 	private BookRepository bookRepository;
 	
 	@Autowired
-	private DetailRepository detailRepository;
+	private AreaRepository areaRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -39,22 +46,32 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     	book.setDescription("Fancy");
     	book.setYear(2000);
     	bookRepository.save(book);
-    	Detail detailGOT = new Detail();
-    	//1 to 10 book state.
-    	detailGOT.setCreatedOn(new Date());
-    	detailGOT.setCondition(5);
-    	detailGOT.setDescription("Used only for school.");
-    	detailGOT.setBook(book);
-    	detailRepository.save(detailGOT);
-    	book.setDetail(detailGOT);
-    	bookRepository.save(book);
-    	//book.setDetail(detailGOT);
-    	//detailGOT.setBook(book);
+    
+    	Area area = new Area();
+    	area.setCreatedOn(new Date());
+    	area.setName("kids");
+    	area.setDescription("Books only for kids.");
+    	areaRepository.save(area);
     	
+    	Area areaAdults = new Area();
+    	areaAdults.setCreatedOn(new Date());
+    	areaAdults.setName("Adults");
+    	areaAdults.setDescription("Only for adults");
+    	areaRepository.save(areaAdults);
     	
+    	Category category = new Category();
+    	category.setCreatedOn(new Date());
+    	category.setName("Fiction");
+    	category.setDescription("All Fiction books.");
+    	category.setArea(area);
+    	categoryRepository.save(category);
     	
-//    	Book book = new Book("Game of Thrones",	"fancy", 1995, new Detail(9, "Good state"));
-//    	bookRepository.save(book);
+    	Category historyCat = new Category();
+    	historyCat.setCreatedOn(new Date());
+    	historyCat.setName("History");
+    	historyCat.setDescription("Just history books");
+    	historyCat.setArea(area);
+    	categoryRepository.save(historyCat);
     }
 
 }

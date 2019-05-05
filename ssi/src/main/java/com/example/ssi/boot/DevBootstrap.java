@@ -10,13 +10,17 @@ import com.example.ssi.model.Client;
 import com.example.ssi.model.Employee;
 import com.example.ssi.model.Factory;
 import com.example.ssi.model.PcInternet;
+import com.example.ssi.model.Profile;
 import com.example.ssi.model.Teacher;
+import com.example.ssi.model.User;
 import com.example.ssi.repository.ClasRepository;
 import com.example.ssi.repository.ClientRepository;
 import com.example.ssi.repository.EmployeeRepository;
 import com.example.ssi.repository.FactoryRepository;
 import com.example.ssi.repository.PcInternetRepository;
+import com.example.ssi.repository.ProfileRepository;
 import com.example.ssi.repository.TeacherRepository;
+import com.example.ssi.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,7 +48,11 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 	@Autowired
 	private FactoryRepository factoryRepository;
 	
+	@Autowired
+	private UserRepository userRepository;
 	
+	@Autowired
+	private ProfileRepository profileRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -52,9 +60,25 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     private void initData() {
+    	oneToOne();
     	oneToMany();
     	manyToMany();
     	manyToOne();
+    }
+    
+    public void oneToOne() {
+    	
+    	Profile userProfile = new Profile();
+    	userProfile.setAddress("User direction");
+    	userProfile.setJob("Seller");
+    	userProfile.setPhone("324234234");
+    	//profileRepository.save(userProfile);
+    	
+    	User user = new User();
+    	user.setName("Mario Flores");
+    	user.setPassword("password");
+    	user.setProfile(userProfile);
+    	userRepository.save(user);
     }
     
     public void oneToMany() {

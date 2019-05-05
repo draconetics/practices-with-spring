@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.library.shopbookapp.dao.BookCommand;
-import com.library.shopbookapp.dao.DetailCommand;
+//import com.library.shopbookapp.dao.DetailCommand;
 import com.library.shopbookapp.model.Book;
-import com.library.shopbookapp.service.BookCreateService;
+//import com.library.shopbookapp.service.BookCreateService;
 
 @RequestMapping(value = "/books")
 @RestController
 public class BookController {
-	
+	/*
 	@Autowired
 	private BookCreateService bookCreateService;
 	
@@ -31,5 +31,5 @@ public class BookController {
 	     bookCreateService.execute();
 	
 	     return bookCreateService.getBook();
-	 }
+	 }*/
 }

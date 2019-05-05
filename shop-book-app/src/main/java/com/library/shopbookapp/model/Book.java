@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "books")
 public class Book extends ModelBase{
 	
 	@NotNull
@@ -25,26 +24,18 @@ public class Book extends ModelBase{
 	
 	@NotNull
 	//@NotEmpty
-	private Integer year;
+	private int year;
 	
 	
-//	 @OneToOne(fetch = FetchType.LAZY,
-//	            cascade =  CascadeType.ALL,
-//	            mappedBy = "book")
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_detail_id",nullable=true)
-	private Detail bookDetail;
 	
 	public Book() {}
 
-	public Book(@NotNull @Size(max = 200) String title, @Size(max = 200) String description, @NotNull Integer year,
-			Detail bookDetail) {
+	public Book(@NotNull @Size(max = 200) String title, @Size(max = 200) String description, @NotNull int year
+			) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.year = year;
-		this.bookDetail = bookDetail;
-		this.bookDetail.setBook(this);
 	}
 
 
@@ -66,22 +57,13 @@ public class Book extends ModelBase{
 		this.description = description;
 	}
 
-	public Integer getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(Integer year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
-
-	public Detail getDetail() {
-		return bookDetail;
-	}
-
-	public void setDetail(Detail detail) {
-		this.bookDetail = detail;
-	}
-	
 
 	
 }

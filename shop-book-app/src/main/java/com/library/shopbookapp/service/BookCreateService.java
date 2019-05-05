@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.shopbookapp.dao.BookCommand;
-import com.library.shopbookapp.dao.DetailCommand;
+//import com.library.shopbookapp.dao.DetailCommand;
 import com.library.shopbookapp.model.Book;
-import com.library.shopbookapp.model.Detail;
-import com.library.shopbookapp.repository.BookRepository;
 
+import com.library.shopbookapp.repository.BookRepository;
+/*
 @Service
 public class BookCreateService {
 
@@ -29,7 +29,7 @@ public class BookCreateService {
     	Book book = composeBookInstance();
     	Detail detail = composeDetailInstance();
     	
-    	book.setDetail(detail);
+    	//book.setDetail(detail);
     	detail.setBook(book);
     	
     	//System.out.println(instance.getCreatedOn());
@@ -64,4 +64,4 @@ public class BookCreateService {
         return this.book;
     }
 	
-}
+}*/
