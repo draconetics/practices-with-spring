@@ -1,8 +1,13 @@
 package com.library.shopbookapp.model;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -11,15 +16,10 @@ public class Area extends ModelBase{
 
 	private String name;
 	private String description;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn( unique=true, nullable=true)
-	private Category category;
-	
-	
-	public Area() {}
 
-
+	@OneToMany(mappedBy="area")
+    private Set<Category> categories;
+	
 	public String getName() {
 		return name;
 	}
@@ -38,6 +38,7 @@ public class Area extends ModelBase{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	
 	
 }

@@ -1,4 +1,4 @@
-package com.example.ssi.model;
+package com.example.ssi.model.manytomany;
 
 import java.util.Set;
 
@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+//many to many
 @Entity
 public class Clas {
 

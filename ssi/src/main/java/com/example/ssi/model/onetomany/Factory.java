@@ -1,4 +1,4 @@
-package com.example.ssi.model;
+package com.example.ssi.model.onetomany;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
+//one to many
 @Entity
 public class Factory {
 	

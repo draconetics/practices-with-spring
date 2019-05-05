@@ -22,8 +22,7 @@ public class User {
 	
 //	@OneToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "profileId")
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
 	private Profile profile;
 	
 	

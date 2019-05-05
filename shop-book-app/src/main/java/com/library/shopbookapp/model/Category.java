@@ -1,7 +1,13 @@
 package com.library.shopbookapp.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 
 @Entity
 public class Category extends ModelBase{
@@ -9,8 +15,13 @@ public class Category extends ModelBase{
 	private String name;
 	private String description;
 	
-	@OneToOne(targetEntity = Area.class)
+	//@OneToOne(targetEntity = Area.class)
+	@ManyToOne
+	@JoinColumn(name = "area_id", nullable=false)
 	private Area area;
+	
+	@OneToMany(mappedBy="category")
+    private Set<Book> books;
 	
 	public String getName() {
 		return name;

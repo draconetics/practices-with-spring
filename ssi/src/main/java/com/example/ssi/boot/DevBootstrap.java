@@ -5,14 +5,14 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import com.example.ssi.model.Clas;
-import com.example.ssi.model.Client;
-import com.example.ssi.model.Employee;
-import com.example.ssi.model.Factory;
-import com.example.ssi.model.PcInternet;
 import com.example.ssi.model.Profile;
-import com.example.ssi.model.Teacher;
 import com.example.ssi.model.User;
+import com.example.ssi.model.manytomany.Clas;
+import com.example.ssi.model.manytomany.Teacher;
+import com.example.ssi.model.manytoone.Client;
+import com.example.ssi.model.manytoone.PcInternet;
+import com.example.ssi.model.onetomany.Employee;
+import com.example.ssi.model.onetomany.Factory;
 import com.example.ssi.repository.ClasRepository;
 import com.example.ssi.repository.ClientRepository;
 import com.example.ssi.repository.EmployeeRepository;
@@ -51,8 +51,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired
+	@Autowired 
 	private ProfileRepository profileRepository;
+
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -68,17 +69,21 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     
     public void oneToOne() {
     	
+    	User user = new User();
+    	user.setName("Mario Flores");
+    	user.setPassword("password");
+    	
+    	
     	Profile userProfile = new Profile();
     	userProfile.setAddress("User direction");
     	userProfile.setJob("Seller");
     	userProfile.setPhone("324234234");
     	//profileRepository.save(userProfile);
+    	userProfile.setUser(user);
     	
-    	User user = new User();
-    	user.setName("Mario Flores");
-    	user.setPassword("password");
-    	user.setProfile(userProfile);
     	userRepository.save(user);
+    	profileRepository.save(userProfile);
+    	
     }
     
     public void oneToMany() {

@@ -10,5 +10,4 @@ public class ShopBookAppApplication {
 		SpringApplication.run(ShopBookAppApplication.class, args);
 		System.out.println("welcome to my shop book app");
 	}
-
 }

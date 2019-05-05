@@ -1,4 +1,4 @@
-package com.example.ssi.model;
+package com.example.ssi.model.onetomany;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

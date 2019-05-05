@@ -19,8 +19,11 @@ public class Profile {
 	private String Address;
 	private String phone;
 	
-	@OneToOne(mappedBy = "profile")
+	@OneToOne
+    @JoinColumn(unique = true, nullable = false, name="user_id")//profile cannot be null
 	private User user;
+	
+	
 
 	public Long getId() {
 		return Id;

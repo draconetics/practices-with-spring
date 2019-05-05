@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -26,18 +27,18 @@ public class Book extends ModelBase{
 	//@NotEmpty
 	private int year;
 	
+	@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)
+	private Category category;
 	
+	@ManyToOne
+	@JoinColumn(name = "author_id", nullable = false)
+	private Author author;
+	
+	@OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+	private DetailBook detailBook;
 	
 	public Book() {}
-
-	public Book(@NotNull @Size(max = 200) String title, @Size(max = 200) String description, @NotNull int year
-			) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.year = year;
-	}
-
 
 
 
@@ -65,5 +66,25 @@ public class Book extends ModelBase{
 		this.year = year;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+
+
+	public Author getAuthor() {
+		return author;
+	}
+
+
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+	
 	
 }
